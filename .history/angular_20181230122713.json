@@ -29,7 +29,7 @@
             "styles": [
               "src/styles.scss",
               "src/common_styles/colors.scss",
-              "src/common_styles/common_style.scss",
+              "src/common_styles/colors.scss"
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []

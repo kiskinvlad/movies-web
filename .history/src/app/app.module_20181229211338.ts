@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { MobxAngularModule } from 'mobx-angular';
-import { HeaderComponent } from './core/header/header.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -15,14 +13,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 }
 @NgModule({
   declarations: [
-    AppComponent,
-    HeaderComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MobxAngularModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

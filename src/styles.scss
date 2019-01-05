@@ -1,1 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: gotham;
+  src: url(assets/fonts/Gotham.otf) format("opentype");
+}
+
+body {
+  font-family: 'gotham', 'arial', sans-serif !important;
+  overflow-x: hidden;
+  background-color: #D8D8D8 !important;
+
+  h3 {
+    font-size: 32px;
+    margin: 0;
+  }
+  
+  h2 {
+    font-size: 36px;
+    margin: 0;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  fa-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  #wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  #wrapper.toggled {
+    padding-left: 250px;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    transform: rotateY(0deg);
+  }
+  
+  #page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 15px;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+  }
+
+}
+
+
+

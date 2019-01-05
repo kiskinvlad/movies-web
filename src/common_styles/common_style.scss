@@ -1,15 +1,59 @@
-body {
-  font-family: 'Helvetica', 'Arial', sans-serif;
+@import "~src/common_styles/colors";
+@import "~src/common_styles/colors";
+
+.btn-primary {
+  background-color: $green;
+  border-color: $green;
+  color: #fff;
 }
 
-h3 {
-  font-size: 42px;
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #2a7b00;
+  border-color: $green;
 }
 
-h2 {
-  font-size: 62px;
+.btn-secondary {
+  background-color: #fff;
+  border-color: $green;
+  color: $green;
 }
 
-p {
-  font-size: 36px;
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary:not(:disabled):not(.disabled):active {
+  background-color: $white;
+  border-color: $green;
+  color: $green;
+}
+
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active:focus {
+  box-shadow: 0 0 0 0.2rem rgba(182, 232, 156, 0.4);
+}
+
+input.form-control:focus {
+  border-color: rgba(55, 160, 0, 0.2);
+  box-shadow: 0 0 0 0.2rem rgba(182, 232, 156, 0.4);
+}
+form {
+  min-width: 320px;
+}
+.control-wrapper {
+  position: relative;
+  .invalid-feedback {
+    font-size: 12px;
+  }
+  div {
+    position: absolute;
+    top: 15px;
+    padding: 5px;
+  }
 }

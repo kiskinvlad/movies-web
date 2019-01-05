@@ -1,0 +1,41 @@
+@import "~src/common_styles/colors";
+
+.navbar {
+  background-color: $ternary_color;
+  color: $white;
+  border-bottom: 1px solid rgba(126, 132, 140, 0.5);
+  box-shadow: 0 1px 6px $shadow;
+
+}
+fa-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: $green;
+}
+.left-block {
+  display: flex;
+
+  h2 {
+    padding: 0 15px;
+  }
+}
+.right-block {
+  display: flex;
+}
+form {
+  padding: 0 15px;
+}
+.user {
+  letter-spacing: 1px;
+  height: 100%;
+  padding: 0 15px;
+  cursor: pointer;
+  p {
+    padding: 0 10px;
+    font-size: 12px;
+    line-height: 40px;
+  }
+  img {
+    height: 40px;
+  }
+}

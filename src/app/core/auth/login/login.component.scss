@@ -1,0 +1,56 @@
+@import "~src/common_styles/colors";
+
+form {
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 100px;
+  box-shadow: 0 1px 6px $shadow;
+  .form-controls {
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+    .control-wrapper {
+      input {
+        margin: 25px auto;
+      }
+    }
+    button {
+      margin: 25px auto;
+      width: 250px;
+    }
+  }
+  .sign-in {
+    margin-top: 25px;
+    p {
+      text-align: center;
+    }
+    p:before,
+    p:after {
+      background-color: #8f8e8e;
+      content: "";
+      display: inline-block;
+      height: 1px;
+      position: relative;
+      vertical-align: middle;
+      width: 5%;
+    }
+    p:after {
+      margin-left: 15px;
+    }
+    p:before {
+      margin-right: 15px;
+    }
+    button {
+      margin: 25px auto;
+      width: 250px;
+    }
+  }
+  h2 {
+    font-size: 22px;
+    color: $green;
+    padding: 15px;
+    margin: 25px auto;
+  }
+  
+}

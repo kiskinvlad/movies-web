@@ -28,9 +28,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/common_styles/colors.scss",
-              "src/common_styles/common_style.scss",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/common_styles/common_style.scss"
             ],
             "scripts": []
           },

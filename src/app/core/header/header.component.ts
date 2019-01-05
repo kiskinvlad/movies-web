@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { observable, action, computed } from 'mobx-angular';
+import { tap, isEmpty } from 'rxjs/operators';
+
+import { User } from '@shared/models/user';
+import { AsideService } from '@core/services/aside/aside.service';
+import { UserService } from '@shared/services/user.service';
 
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  public user: User;
+  public userExist: boolean;
 
-  constructor() { }
+  constructor(public asideService: AsideService, private userService: UserService) {
 
-  ngOnInit() {
+  }
+
+  @action ngOnInit() {
+    this.userService.userObject.pipe(
+      tap((user) => {
+        this.user = user;
+      })
+    ).subscribe();
+  }
+
+  @action toggleAside(): void {
+    this.asideService.toggleAside();
   }
 
 }

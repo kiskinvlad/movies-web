@@ -3,8 +3,8 @@ import { observable, action, computed } from 'mobx-angular';
 import { tap, isEmpty } from 'rxjs/operators';
 
 import { User } from '@shared/models/user';
-import { AsideService } from '@core/services/aside/aside.service';
 import { UserService } from '@shared/services/user.service';
+import { AsideService } from '@core/aside/services/aside.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

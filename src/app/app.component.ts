@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { AsideService } from './core/services/aside/aside.service';
-import { UserService } from './shared/services/user.service';
+import { AsideService } from '@core/aside/services/aside.service';
+import { UserService } from '@shared/services/user.service';
 
 @Component({
   selector: 'app-root',

@@ -8,7 +8,7 @@ import { AuthRoutingModule } from '@core/auth/auth-routing.module';
 import { LoginComponent } from '@core/auth/login/login.component';
 import { RegistrationComponent } from '@core/auth/registration/registration.component';
 import { AuthComponent } from '@core/auth/auth/auth.component';
-import { AsideService } from '@core/services/aside/aside.service';
+import { AsideService } from '@core/aside/services/aside.service';
 
 @NgModule({
   imports: [

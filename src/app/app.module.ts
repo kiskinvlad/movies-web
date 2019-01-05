@@ -15,11 +15,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from '@core/header/header.component';
 import { AsideComponent } from '@core/aside/aside.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AsideService } from '@core/services/aside/aside.service';
 import { JwtInterceptor } from '@shared/interceptors/jwt.interceptor';
 import { ErrorInterceptor } from '@shared/interceptors/error.interceptor';
-
-
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -45,7 +42,6 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppRoutingModule,
   ],
   providers: [
-    AsideService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],

@@ -1,2 +1,5 @@
-<app-header></app-header>
-<router-outlet></router-outlet>
+<div id="wrapper" *mobxAutorun [class.toggled]="asideService.toggled">
+  <app-header></app-header>
+  <app-aside></app-aside>
+  <router-outlet></router-outlet>
+</div>

@@ -1,3 +1,19 @@
-<p>
-  header works!
-</p>
+<nav class="navbar" *mobxAutorun>
+    <div class="container">
+      <div class="left-block">
+        <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
+        <h2 class="navbar-brand">Favorite movies</h2>
+      </div>
+      <div class="right-block" *ngIf="user">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <fa-icon [icon]="['fas', 'question']"></fa-icon>
+        </form>
+        <div class="user d-flex">
+          <img src="assets/images/0.jpeg" class="rounded-circle rounded float-right" alt="...">
+          <p>{{user.firstName}} <span>{{user.lastName}}</span></p>
+          <fa-icon [icon]="['fas', 'angle-down']"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </nav>

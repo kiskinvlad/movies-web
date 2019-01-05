@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { routerPaths } from '../../../shared/constants';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { RegistrationModel } from '../../../shared/models/registrationModel';
-import { AuthenticationService } from '../services/auth.service';
+
+import { routerPaths } from '@shared/constants';
+import { RegistrationModel } from '@shared/models/registrationModel';
+import { AuthenticationService } from '@core/auth/services/auth.service';
 
 @Component({
   selector: 'app-registration',

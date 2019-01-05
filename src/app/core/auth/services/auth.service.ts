@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { configs, apiPaths } from '../../../shared/constants/index';
-import { User } from '../../../shared/models/user';
-import { UserService } from '../../../shared/services/user.service';
-import { LoginModel } from '../../../shared/models/loginModel';
-import { RegistrationModel } from '../../../shared/models/registrationModel';
+
+import { User } from '@shared/models/user';
+import { UserService } from '@shared/services/user.service';
+import { LoginModel } from '@shared/models/loginModel';
+import { configs, apiPaths } from '@shared/constants';
+import { RegistrationModel } from '@shared/models/registrationModel';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {

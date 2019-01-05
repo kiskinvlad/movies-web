@@ -4,7 +4,7 @@ import { UserService } from '../services/user.service';
 import { routerPaths } from '../constants';
 
 @Injectable({ providedIn: 'root' })
-export class IsLoginedGuard implements CanActivate {
+export class UserAuthedGuard implements CanActivate {
 
     constructor(private router: Router,
     private userService: UserService) { }

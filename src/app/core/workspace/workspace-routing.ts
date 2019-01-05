@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { MainComponent } from './main/main.component';
-import { HomeComponent } from './home/home.component';
-import { UserResolver } from '../../shared/resolvers/user.resolver';
+import { MainComponent } from '@core/workspace/main/main.component';
+import { HomeComponent } from '@core/workspace/home/home.component';
+import { UserResolver } from '@shared/resolvers/user.resolver';
+
 
 const routes: Routes = [
   {

@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login/login.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { AuthComponent } from './auth/auth.component';
-import { AppRoutingModule } from '../../app-routing.module';
-import { AuthRoutingModule } from './auth-routing.module';
-import { AsideService } from '../services/aside/aside.service';
-import { MobxAngularModule } from 'mobx-angular';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { MobxAngularModule } from 'mobx-angular';
+
+import { AuthRoutingModule } from '@core/auth/auth-routing.module';
+import { LoginComponent } from '@core/auth/login/login.component';
+import { RegistrationComponent } from '@core/auth/registration/registration.component';
+import { AuthComponent } from '@core/auth/auth/auth.component';
+import { AsideService } from '@core/services/aside/aside.service';
 
 @NgModule({
   imports: [

@@ -1,7 +1,8 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { observable, action, computed } from 'mobx-angular';
 import { Observable, of } from 'rxjs';
-import { User } from '../models/user';
+
+import { User } from '@shared/models/user';
 
 @Injectable({
   providedIn: 'root'

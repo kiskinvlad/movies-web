@@ -16,6 +16,13 @@
         <div *ngIf="submitted && loginForm.controls.email.errors" class="invalid-feedback">
           <div *ngIf="loginForm.controls.email.errors.required">Email is mandatory</div>
           <div *ngIf="loginForm.controls.email.errors.email">Email is not valid</div>
+          <div *ngIf="loginForm.controls.email.errors.userNotExist">
+            {{errorMessage}}
+          </div>
+          <div *ngIf="loginForm.controls.email.errors.userNotVerified">
+            {{errorMessage}}
+            <a *ngIf="!resended" (click)="resendEmail()">or Resend email</a>
+          </div>
         </div> 
       </div>
       <div class="control-wrapper">

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { UserService } from '../services/user.service';
-import { routerPaths } from '../constants';
+import { UserService } from '@shared/services/user/user.service';
+import { routerPaths } from '@shared/constants';
 
 @Injectable({ providedIn: 'root' })
 export class UserAuthedGuard implements CanActivate {
@@ -10,8 +10,8 @@ export class UserAuthedGuard implements CanActivate {
     private userService: UserService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-      const token = this.userService.user ? this.userService.user.token : null;
-      if (this.userService.user && token) {
+      const token = this.userService.authToken;
+      if (token) {
         this.router.navigate([routerPaths.home]);
         return false;
       }

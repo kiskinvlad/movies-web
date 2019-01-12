@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { routerPaths } from '@shared/constants';
 import { RegistrationModel } from '@shared/models/registrationModel';
 import { AuthenticationService } from '@core/auth/services/auth.service';
+import { observable, action } from 'mobx-angular';
 
 @Component({
   selector: 'app-registration',
@@ -13,11 +14,15 @@ import { AuthenticationService } from '@core/auth/services/auth.service';
 export class RegistrationComponent implements OnInit {
   routerPath = routerPaths;
   registrationForm: FormGroup;
-  submitted = false;
+
+  @observable submitted = false;
+  @observable errorMessage: string;
+  @observable sended = false;
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthenticationService
+    private authService: AuthenticationService,
+    private chRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
@@ -29,7 +34,7 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
+  @action onSubmit(): void {
     this.submitted = true;
 
     if (this.registrationForm.invalid) {
@@ -39,9 +44,22 @@ export class RegistrationComponent implements OnInit {
       firstName: this.registrationForm.value.firstName,
       lastName: this.registrationForm.value.lastName,
       email: this.registrationForm.value.email,
-      password: this.registrationForm.value.password
+      password: this.registrationForm.value.password,
+      isVerified: false
     };
-    this.authService.signUp(reqData).subscribe();
+    this.authService.signUp(reqData).subscribe(
+      (user) => {
+        this.sended = true;
+        this.chRef.markForCheck();
+      },
+      (error) => {
+        if (error.name === 'USER_EMAIL_EXIST') {
+          this.errorMessage = error.message;
+          this.registrationForm.controls.email.setErrors({'emailExist': true});
+          this.chRef.markForCheck();
+        }
+      }
+    );
   }
 
 }

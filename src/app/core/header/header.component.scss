@@ -30,6 +30,7 @@ form {
   height: 100%;
   padding: 0 15px;
   cursor: pointer;
+  z-index: 999;
   p {
     padding: 0 10px;
     font-size: 12px;
@@ -37,5 +38,38 @@ form {
   }
   img {
     height: 40px;
+  }
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.dropdown-menu {
+  margin-top: -5px;
+  transition: all 0.3s linear;
+  opacity: 0;
+}
+
+.dropdown-menu.show {
+  transition: all 0.3s linear;
+  margin-top: 10px;
+  opacity: 1;
+}
+.modal-body {
+  label {
+    padding: 15px 5px;
+    margin-top: 30px;
+    border: 1px dashed;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+  }
+}
+
+.modal-footer {
+  justify-content: space-between;
+  img {
+    border-radius: 50%;
   }
 }

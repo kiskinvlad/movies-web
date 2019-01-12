@@ -1,5 +1,9 @@
 <div class="registration d-flex justify-content-center">
+  <div *ngIf="sended">
+    <h2>Mail sended. Check your email.</h2>
+  </div>
   <form 
+    *ngIf="!sended"
     class="d-flex flex-column col-12 col-md-6 col-lg-4"
     novalidate
     [formGroup]="registrationForm"
@@ -41,6 +45,9 @@
             <div *ngIf="submitted && registrationForm.controls.email.errors" class="invalid-feedback">
               <div *ngIf="registrationForm.controls.email.errors.required">Email is mandatory</div>
               <div *ngIf="registrationForm.controls.email.errors.email">Email is not valid</div>
+              <div *ngIf="registrationForm.controls.email.errors.emailExist">
+                {{errorMessage}}
+              </div>
           </div> 
         </div>
       </div>

@@ -9,6 +9,7 @@ import { LoginComponent } from '@core/auth/login/login.component';
 import { RegistrationComponent } from '@core/auth/registration/registration.component';
 import { AuthComponent } from '@core/auth/auth/auth.component';
 import { AsideService } from '@core/aside/services/aside.service';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   imports: [
@@ -16,12 +17,13 @@ import { AsideService } from '@core/aside/services/aside.service';
     AuthRoutingModule,
     MobxAngularModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     LoginComponent,
     RegistrationComponent,
     AuthComponent,
+    ConfirmationComponent,
   ],
   providers: [AsideService],
 })

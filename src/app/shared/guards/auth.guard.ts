@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
-import { UserService } from '@shared/services/user.service';
 import { routerPaths } from '@shared/constants';
+import { UserService } from '@shared/services/user/user.service';
 
 
 @Injectable({ providedIn: 'root' })
@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
     private userService: UserService) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const token = this.userService.user ? this.userService.user.token : null;
-        if (this.userService.user && token) {
+        const token = this.userService.authToken;
+        if (token) {
             return true;
         }
         this.router.navigate([routerPaths.login]);

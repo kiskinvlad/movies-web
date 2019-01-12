@@ -39,6 +39,17 @@
   box-shadow: 0 0 0 0.2rem rgba(182, 232, 156, 0.4);
 }
 
+.btn-outline-dark {
+  color: $ternary_color;
+  border-color: $ternary_color;
+}
+
+.btn-outline-dark:hover {
+  color: #fff;
+  background-color: $ternary_color;
+  border-color: #343a40;
+}
+
 input.form-control:focus {
   border-color: rgba(55, 160, 0, 0.2);
   box-shadow: 0 0 0 0.2rem rgba(182, 232, 156, 0.4);
@@ -56,4 +67,29 @@ form {
     top: 15px;
     padding: 5px;
   }
+}
+
+.dropdown-menu {
+  display: block;
+  opacity: 0;
+  padding: 0;
+  .dropdown-item {
+    padding: 0.5rem 1.5rem;
+  }
+  .dropdown-item:hover {
+    background: rgba(126, 132, 140, 0.5);
+    color: $green!important;
+  }
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+}
+
+button:focus {
+  outline: none;
+}
+
+.modal {
+  color: $secondary_color;
 }

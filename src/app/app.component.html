@@ -3,3 +3,12 @@
   <app-aside></app-aside>
   <router-outlet></router-outlet>
 </div>
+<ngx-loading 
+  [show]="spinnerService.loading" 
+  [config]="{
+    animationType: ngxLoadingAnimationTypes.rectangleBounce,
+    primaryColour: '#8eff52',
+    backdropBorderRadius: '3px'
+  }"
+  [template]="loadingTemplate">
+</ngx-loading>

@@ -6,10 +6,13 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MobxAngularModule } from 'mobx-angular';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { FaIconService, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faAngleDown, faQuestion, faBars } from '@fortawesome/free-solid-svg-icons';
+import { NgbDropdownModule, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxLoadingModule } from 'ngx-loading';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '@core/header/header.component';
@@ -40,10 +43,14 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
       }
     }),
     AppRoutingModule,
+    NgbDropdownModule,
+    NgbModalModule,
+    ImageCropperModule,
+    NgxLoadingModule.forRoot({})
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],
 })

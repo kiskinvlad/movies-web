@@ -1,5 +1,9 @@
 @import "~src/common_styles/colors";
-
+.registration {
+  >div {
+    margin-top: 100px;
+  }
+}
 form {
   padding: 15px;
   background: #fff;

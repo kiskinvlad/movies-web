@@ -3,14 +3,14 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot, Router, Resolve } from '@a
 import { Observable, EMPTY } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 
-import { User } from '@shared/models/user';
-import { UserService } from '@shared/services/user.service';
+import { JwtUserModel } from '@shared/models/jwtUserModel';
+import { UserService } from '@shared/services/user/user.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserResolver implements Resolve<User> {
+export class UserResolver implements Resolve<JwtUserModel> {
 
   constructor (
     private userService: UserService,
@@ -19,8 +19,8 @@ export class UserResolver implements Resolve<User> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<User> {
-    return this.userService.userObject
+  ): Observable<JwtUserModel> {
+    return this.userService.authUser
       .pipe(
         catchError(error => this.handleError(error)),
       );

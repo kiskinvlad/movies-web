@@ -1,6 +1,13 @@
 @import "~src/common_styles/colors";
 
 form {
+  a,
+  a:hover {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
   padding: 15px;
   background: #fff;
   border-radius: 5px;

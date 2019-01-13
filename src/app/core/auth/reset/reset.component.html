@@ -1,0 +1,38 @@
+<div class="reset-wrp">
+  <div *ngIf="sended">
+    <h2>Mail sended. Check your email.</h2>
+  </div>
+  <div *ngIf="!sended" class="d-flex justify-content-center">
+    <form 
+      class="d-flex flex-column col-12 col-md-4"
+      novalidate
+      [formGroup]="resetForm"
+      (ngSubmit)="onSubmit()">
+      <h2>Reset password</h2>
+      <div class="form-controls">
+        <div class="control-wrapper">
+          <input 
+            [ngClass]="{ 'is-invalid': submitted && resetForm.controls.email.errors }"
+            formControlName="email"
+            class="form-control" 
+            type="email"
+            placeholder="Email">
+          <div *ngIf="submitted && resetForm.controls.email.errors" class="invalid-feedback">
+            <div *ngIf="resetForm.controls.email.errors.required">Email is mandatory</div>
+            <div *ngIf="resetForm.controls.email.errors.email">Email is not valid</div>
+            <div *ngIf="resetForm.controls.email.errors.userNotExist">
+              {{errorMessage}}
+            </div>
+            <div *ngIf="resetForm.controls.email.errors.userNotVerified">
+              {{errorMessage}}.
+              <a *ngIf="!resended" (click)="sendVerification()"> Resend verification to email</a>
+            </div>
+          </div>
+        </div> 
+        <div class="d-flex flex-column">
+          <button class="btn btn-primary" type="submit">Reset</button>
+        </div>
+      </div>    
+    </form>
+  </div>
+</div>

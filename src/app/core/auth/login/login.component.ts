@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
         if (error.name === 'USER_NOT_VERIFIED') {
           this.errorMessage = error.message;
           this.loginForm.controls.email.setErrors({'userNotVerified': true});
+          this.userService.setUserEmail(reqData.email);
         }
         this.chRef.markForCheck();
       }
@@ -76,6 +77,7 @@ export class LoginComponent implements OnInit {
       catchError(error => this.errorMessage = error),
     ).subscribe(() => {
       this.chRef.markForCheck();
+      this.userService.removeEmail();
     });
   }
 

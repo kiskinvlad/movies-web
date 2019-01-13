@@ -9,11 +9,9 @@ import { UserService } from '@shared/services/user/user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class ConfirmationResolver implements Resolve<any> {
+export class ResetConfirmationResolver implements Resolve<any> {
 
   constructor (
-    private authService: AuthenticationService,
-    private userService: UserService,
     private router: Router) {}
 
   resolve(
@@ -22,19 +20,11 @@ export class ConfirmationResolver implements Resolve<any> {
   ): Observable<any> {
     const token: string = route.queryParams.token;
     const email: string = route.queryParams.email || route.queryParams['amp;email'];
-    if (token) {
-      return this.authService.confirmation(email, token).pipe(
-        tap((res) => {
-          return res;
-        }),
-        catchError(error => this.handleError(error)),
-      );
+
+    if (token && email) {
+      return of({token, email});
     }
     return EMPTY;
-  }
-
-  private handleError(error: any) {
-    return of(error);
   }
 
 }

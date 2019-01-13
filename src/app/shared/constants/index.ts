@@ -5,16 +5,21 @@ export const configs = {
 };
 
 export const apiPaths = {
+  home: '',
   login: '/auth/login',
   registration: '/auth/registration',
   confirmation: '/auth/confirmation',
   resend: '/auth/send',
   update: '/auth/update',
-  getUser: '/auth/getUser'
+  getUser: '/auth/getUser',
+  reset: '/auth/reset',
+  resetConfirmation: '/auth/resetConfirmation'
 };
 
 export const routerPaths = {
   login: '/auth/login',
   signup: '/auth/registration',
-  home: '/home'
+  reset: '/auth/reset',
+
+  home: '/home',
 };

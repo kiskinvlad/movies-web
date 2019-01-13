@@ -36,8 +36,9 @@
           <div *ngIf="loginForm.controls.password.errors.required">Password is mandatory</div>
         </div>
       </div>
-      <div class="d-flex">
+      <div class="d-flex flex-column">
         <button class="btn btn-primary" type="submit">Log In</button>
+        <a [routerLink]="routerPath.reset">Reset password</a>
       </div>
     </div>
     <div class="sign-in">

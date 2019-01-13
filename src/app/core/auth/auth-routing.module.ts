@@ -6,6 +6,9 @@ import { AuthComponent } from './auth/auth.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ConfirmationComponent } from '@core/auth/confirmation/confirmation.component';
 import { ConfirmationResolver } from '@shared/resolvers/confirmation.resolver';
+import { ResetComponent } from '@core/auth/reset/reset.component';
+import { ResetConfirmationComponent } from '@core/auth/reset-confirmation/reset-confirmation.component';
+import { ResetConfirmationResolver } from '@shared/resolvers/resetConfirmation.resolver';
 
 const routes: Routes = [
   {
@@ -25,6 +28,18 @@ const routes: Routes = [
         component: ConfirmationComponent,
         resolve: {
           response: ConfirmationResolver,
+        },
+        runGuardsAndResolvers: 'always',
+      },
+      {
+        path: 'reset',
+        component: ResetComponent,
+      },
+      {
+        path: 'resetConfirmation',
+        component: ResetConfirmationComponent,
+        resolve: {
+          response: ResetConfirmationResolver,
         },
         runGuardsAndResolvers: 'always',
       },

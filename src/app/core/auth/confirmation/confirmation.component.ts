@@ -28,7 +28,7 @@ export class ConfirmationComponent implements OnInit {
   }
 
   resendEmail() {
-    const email: string = this.userService.getUserEmail;
+    const email: string = this.response.email;
     this.authService.resendConfirmation(email).pipe(
       tap((res) => {
         this.response = res;

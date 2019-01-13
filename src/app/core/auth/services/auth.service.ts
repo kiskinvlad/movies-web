@@ -62,7 +62,7 @@ export class AuthenticationService {
         );
     }
 
-    signUp(registrationModel: RegistrationModel): Observable<any> {
+    signUp(registrationModel: RegistrationModel): Observable<JwtUserModel> {
         this.spinner.show();
         this.userService.setUserEmail(registrationModel.email);
         return this.http.post<any>(`${configs.apiUrl}${apiPaths.registration}`, { registrationModel})
@@ -111,9 +111,9 @@ export class AuthenticationService {
         );
     }
 
-    updateUser(email: String, image: String): Observable<any> {
+    updateUser(email: String, image: String): Observable<JwtUserModel> {
         this.spinner.show();
-        return this.http.patch<any>(`${configs.apiUrl}${apiPaths.update}`, { email, image })
+        return this.http.patch<{email: String, image: String}>(`${configs.apiUrl}${apiPaths.update}`, { email, image })
         .pipe(
             flatMap((user) => {
                 return this.http.post<JwtUserModel>(`${configs.apiUrl}${apiPaths.getUser}`, { email });
@@ -127,6 +127,30 @@ export class AuthenticationService {
                 location.reload();
             }),
             share()
+        );
+    }
+
+    resetPassword(email: String): Observable<JwtUserModel> {
+        return this.http.post<any>(`${configs.apiUrl}${apiPaths.reset}`, { email })
+        .pipe(
+            tap((user) => {
+                this.userService.setUserEmail(user.email);
+            }),
+            catchError((err) => {
+                return throwError(err);
+            })
+        );
+    }
+
+    setNewPassword(email: String, password: String, token: String): Observable<any> {
+        return this.http.post<any>(`${configs.apiUrl}${apiPaths.resetConfirmation}`, { email, password, token })
+        .pipe(
+            tap((user) => {
+                this.userService.removeEmail();
+            }),
+            catchError((err) => {
+                return throwError(err);
+            })
         );
     }
 

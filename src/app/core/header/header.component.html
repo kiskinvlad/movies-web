@@ -2,7 +2,7 @@
     <div class="container">
       <div class="left-block">
         <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
-        <h2 class="navbar-brand">Favorite movies</h2>
+        <h2 [routerLink]='routerPath.home' class="navbar-brand">Favorite movies</h2>
       </div>
       <div class="right-block" *ngIf="user">
         <form class="form-inline">

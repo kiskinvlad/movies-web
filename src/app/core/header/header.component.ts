@@ -10,6 +10,7 @@ import { AuthenticationService } from '@core/auth/services/auth.service';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { HeaderService } from '@core/header/services/header.service';
 import { UserService } from '@shared/services/user/user.service';
+import { routerPaths } from '@shared/constants';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -21,6 +22,7 @@ export class HeaderComponent implements OnInit {
   public user: User;
   public userExist: boolean;
   public avatar: SafeUrl;
+  routerPath = routerPaths;
 
   @observable imageChangedEvent: any = '';
   @observable croppedImage: any = '';

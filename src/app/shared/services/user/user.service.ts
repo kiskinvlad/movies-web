@@ -26,11 +26,16 @@ export class UserService {
     localStorage.setItem('token', token);
   }
 
+  @action removeEmail(): void {
+    localStorage.removeItem('email');
+  }
+
   @action logOut(): void {
     this.user = null;
     this.token = null;
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('email');
     location.reload();
   }
 

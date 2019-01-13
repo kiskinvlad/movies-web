@@ -10,6 +10,8 @@ import { RegistrationComponent } from '@core/auth/registration/registration.comp
 import { AuthComponent } from '@core/auth/auth/auth.component';
 import { AsideService } from '@core/aside/services/aside.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { ResetComponent } from './reset/reset.component';
+import { ResetConfirmationComponent } from './reset-confirmation/reset-confirmation.component';
 
 @NgModule({
   imports: [
@@ -24,6 +26,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     RegistrationComponent,
     AuthComponent,
     ConfirmationComponent,
+    ResetComponent,
+    ResetConfirmationComponent,
   ],
   providers: [AsideService],
 })

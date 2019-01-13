@@ -14,7 +14,10 @@ fa-icon {
 }
 .left-block {
   display: flex;
-
+  cursor: pointer;
+  :focus {
+    outline: none;
+  }
   h2 {
     padding: 0 15px;
   }

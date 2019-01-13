@@ -1,0 +1,41 @@
+<div class="reset-wrp">
+    <div *ngIf="sended">
+        <h2>Password changed.</h2>
+      </div>
+    <div *ngIf="!sended" class="d-flex justify-content-center">
+      <form 
+        class="d-flex flex-column col-12 col-md-4"
+        novalidate
+        [formGroup]="resetForm"
+        (ngSubmit)="onSubmit()">
+        <h2>Set new password</h2>
+        <div class="form-controls">
+          <div class="control-wrapper">
+            <input 
+              [ngClass]="{ 'is-invalid': submitted && resetForm.controls.password.errors }"
+              formControlName="password"
+              class="form-control" 
+              type="password"
+              placeholder="New password">
+            <div *ngIf="submitted && resetForm.controls.password.errors" class="invalid-feedback">
+              <div *ngIf="resetForm.controls.password.errors.required">New password is mandatory</div>
+              <div *ngIf="resetForm.controls.password.errors.minlength">Password must be at least 6 characters long</div>
+              <div *ngIf="resetForm.controls.password.errors.tokenNotFound">
+                {{errorMessage}}
+              </div>
+              <div *ngIf="resetForm.controls.password.errors.passNotExist">
+                {{errorMessage}}
+              </div>
+              <div *ngIf="resetForm.controls.password.errors.tokenNotVerified">
+                {{errorMessage}}
+                <a [routerLink]="routerPath.reset">Try again</a>
+              </div>
+            </div>
+          </div> 
+          <div class="d-flex flex-column">
+            <button class="btn btn-primary" type="submit">Confirm</button>
+          </div>
+        </div>    
+      </form>
+    </div>
+  </div>

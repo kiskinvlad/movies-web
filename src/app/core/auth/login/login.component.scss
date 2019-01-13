@@ -1,18 +1,20 @@
 @import "~src/common_styles/colors";
 
 form {
+  padding: 15px;
+  background: #fff;
+  border-radius: 5px;
+  margin-top: 100px;
+  box-shadow: 0 1px 6px $shadow;
   a,
   a:hover {
     color: #007bff;
     text-decoration: none;
     background-color: transparent;
     cursor: pointer;
+    text-align: center;
+    font-size: 12px;
   }
-  padding: 15px;
-  background: #fff;
-  border-radius: 5px;
-  margin-top: 100px;
-  box-shadow: 0 1px 6px $shadow;
   .form-controls {
     max-width: 350px;
     width: 100%;

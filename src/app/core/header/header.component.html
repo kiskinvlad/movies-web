@@ -1,18 +1,25 @@
 <nav class="navbar" *mobxAutorun>
-    <div class="container">
+    <div class="container d-none d-lg-flex d-md-none">
       <div class="left-block">
         <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
         <h2 [routerLink]='routerPath.home' class="navbar-brand">Favorite movies</h2>
+        <div ngbDropdown placement="bottom" class="d-block d-sm-none user">
+            <span ngbDropdownToggle>Profile</span>
+            <div ngbDropdownMenu>
+                <a class="dropdown-item" (click)="open(content)">{{user.image ? 'Change' : 'Set' }} Avatar</a>
+                <a class="dropdown-item" (click)="logout()">Log Out</a>
+              </div> 
+          </div>
       </div>
       <div class="right-block" *ngIf="user">
         <form class="form-inline">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <fa-icon [icon]="['fas', 'question']"></fa-icon>
+          <fa-icon class="d-none d-sm-block" [icon]="['fas', 'question']"></fa-icon>
         </form>
-        <div ngbDropdown class="user">
-          <div class="d-flex" ngbDropdownToggle>
+        <div ngbDropdown autoClose="inside" class="d-none d-sm-block user" >
+          <div class="d-flex" [ngClass]="{'active': dropDownActive}" ngbDropdownToggle (click)="dropDownActive = !dropDownActive">
               <img [src]="avatar" 
-                onError="this.src='assets/images/0.jpeg'"
+                onError="this.src='assets/images/no-image.png'"
                 class="rounded-circle rounded float-right"
                 alt="...">
               <p>{{user.firstName}} <span>{{user.lastName}}</span></p>
@@ -24,6 +31,21 @@
           </div> 
         </div>
       </div>
+    </div>
+    <div class="container-fluid d-md-flex d-lg-none">
+      <div class="left-block">
+          <div class="d-flex">
+            <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
+            <h2 [routerLink]='routerPath.home' class="navbar-brand">FavMov</h2>
+          </div>
+          <div ngbDropdown placement="bottom" class="user">
+              <span ngbDropdownToggle>Profile</span>
+              <div ngbDropdownMenu>
+                  <a class="dropdown-item" (click)="open(content)">{{user.image ? 'Change' : 'Set' }} Avatar</a>
+                  <a class="dropdown-item" (click)="logout()">Log Out</a>
+                </div> 
+            </div>
+        </div>
     </div>
   </nav>
 

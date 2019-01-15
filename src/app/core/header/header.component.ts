@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   public user: User;
   public userExist: boolean;
   public avatar: SafeUrl;
+  public dropDownActive = false;
   routerPath = routerPaths;
 
   @observable imageChangedEvent: any = '';

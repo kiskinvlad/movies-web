@@ -131,6 +131,7 @@ export class AuthenticationService {
     }
 
     resetPassword(email: String): Observable<JwtUserModel> {
+        this.spinner.show();
         return this.http.post<any>(`${configs.apiUrl}${apiPaths.reset}`, { email })
         .pipe(
             tap((user) => {
@@ -138,11 +139,15 @@ export class AuthenticationService {
             }),
             catchError((err) => {
                 return throwError(err);
+            }),
+            finalize(() => {
+                this.spinner.hide();
             })
         );
     }
 
     setNewPassword(email: String, password: String, token: String): Observable<any> {
+        this.spinner.show();
         return this.http.post<any>(`${configs.apiUrl}${apiPaths.resetConfirmation}`, { email, password, token })
         .pipe(
             tap((user) => {
@@ -150,6 +155,9 @@ export class AuthenticationService {
             }),
             catchError((err) => {
                 return throwError(err);
+            }),
+            finalize(() => {
+                this.spinner.hide();
             })
         );
     }

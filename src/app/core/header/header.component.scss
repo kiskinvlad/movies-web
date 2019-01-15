@@ -5,15 +5,21 @@
   color: $white;
   border-bottom: 1px solid rgba(126, 132, 140, 0.5);
   box-shadow: 0 1px 6px $shadow;
-
+  .navbar-brand {
+    line-height: 44px;
+  }
 }
 fa-icon {
+  transition: all 0.2s linear;
   font-size: 24px;
   cursor: pointer;
   color: $green;
 }
 .left-block {
   display: flex;
+  fa-icon:hover {
+    color: $white;
+  }
   cursor: pointer;
   :focus {
     outline: none;
@@ -22,11 +28,18 @@ fa-icon {
     padding: 0 15px;
   }
 }
+.d-md-flex {
+  .left-block {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
 .right-block {
   display: flex;
 }
 form {
   padding: 0 15px;
+  margin: 10px 0;
 }
 .user {
   letter-spacing: 1px;
@@ -34,6 +47,7 @@ form {
   padding: 0 15px;
   cursor: pointer;
   z-index: 999;
+  margin: 10px 0;
   p {
     padding: 0 10px;
     font-size: 12px;
@@ -52,12 +66,14 @@ form {
   margin-top: -5px;
   transition: all 0.3s linear;
   opacity: 0;
+  display: none;
 }
 
 .dropdown-menu.show {
   transition: all 0.3s linear;
   margin-top: 10px;
   opacity: 1;
+  display: block;
 }
 .modal-body {
   label {
@@ -74,5 +90,16 @@ form {
   justify-content: space-between;
   img {
     border-radius: 50%;
+  }
+}
+.dropdown-toggle {
+  fa-icon {
+    transition: transform 0.2s linear;
+  }
+}
+.dropdown-toggle.active {
+  fa-icon {
+    transition: transform 0.2s linear;
+    transform: rotate(180deg);
   }
 }

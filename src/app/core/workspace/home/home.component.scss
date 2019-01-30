@@ -1,0 +1,61 @@
+@import "~src/common_styles/colors";
+
+.home-wrp {
+  display: flex;
+  justify-content: center;
+  > div {
+    width: 100%;
+    img {
+
+    }  
+    div.movie-block {
+      font-size: 12px;
+      padding: 10px 15px;
+      color: #495057;
+      h2 {
+        color: $green;
+        font-size: 18px;
+        letter-spacing: 1px;
+      }
+      p {
+        min-height: 55px;
+        max-height: 55px;
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      hr {
+        position: relative;
+        top: 9px;
+        margin: 0;
+      }
+    }
+    :first-child.movie-block {
+      text-align: center;
+      div {
+        border: 1px dashed;
+        padding: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.modal-body {
+  label {
+    padding: 15px 5px;
+    margin-top: 30px;
+    border: 1px dashed;
+    text-align: center;
+    border-radius: 5px;
+    width: 100%;
+  }
+  .dp-wrapper {
+    .invalid-feedback {
+      position: absolute;
+      bottom: -8px;
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
+}

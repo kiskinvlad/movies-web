@@ -12,6 +12,7 @@ import { AsideService } from '@core/aside/services/aside.service';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { ResetComponent } from './reset/reset.component';
 import { ResetConfirmationComponent } from './reset-confirmation/reset-confirmation.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -20,6 +21,7 @@ import { ResetConfirmationComponent } from './reset-confirmation/reset-confirmat
     MobxAngularModule,
     ReactiveFormsModule,
     FormsModule,
+    TranslateModule
   ],
   declarations: [
     LoginComponent,

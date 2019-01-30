@@ -1,57 +1,63 @@
 <nav class="navbar" *mobxAutorun>
-    <div class="container d-none d-lg-flex d-md-none">
-      <div class="left-block">
-        <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
-        <h2 [routerLink]='routerPath.home' class="navbar-brand">Favorite movies</h2>
-        <div ngbDropdown placement="bottom" class="d-block d-sm-none user">
+  <div class="container d-none d-lg-flex d-md-none">
+    <div class="left-block">
+      <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
+      <h2 [routerLink]='routerPath.home' class="navbar-brand">{{ 'HEADER_FAVOURITE_MOVIES' | translate }}</h2>
+      <div *ngIf="user" ngbDropdown placement="bottom" class="d-block d-sm-none user">
+          <span ngbDropdownToggle>{{ 'HEADER_PROFILE' | translate}}</span>
+          <div ngbDropdownMenu>
+              <a class="dropdown-item" (click)="open(content)">
+                {{user.image ? 'HEADER_CHANGE_AVATAR' : 'HEADER_SET_AVATAR' | translate}}
+              </a>
+              <a class="dropdown-item" (click)="logout()">{{'HEADER_LOG_OUT' | translate}}</a>
+            </div> 
+        </div>
+    </div>
+    <div class="right-block" *ngIf="user">
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <fa-icon class="d-none d-sm-block" [icon]="['fas', 'question']"></fa-icon>
+      </form>
+      <div ngbDropdown autoClose="inside" class="d-none d-sm-block user" >
+        <div class="d-flex" [ngClass]="{'active': dropDownActive}" ngbDropdownToggle (click)="dropDownActive = !dropDownActive">
+            <img [src]="avatar" 
+              onError="this.src='assets/images/no-image.png'"
+              class="rounded-circle rounded float-right"
+              alt="...">
+            <p>{{user.firstName}} <span>{{user.lastName}}</span></p>
+            <fa-icon [icon]="['fas', 'angle-down']" ></fa-icon> 
+        </div>
+        <div ngbDropdownMenu>
+          <a class="dropdown-item" (click)="open(content)">
+              {{user.image ? 'HEADER_CHANGE_AVATAR' : 'HEADER_SET_AVATAR' | translate}}
+          </a>
+          <a class="dropdown-item" (click)="logout()">{{'HEADER_LOG_OUT' | translate}}</a>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid d-md-flex d-lg-none">
+    <div class="left-block">
+        <div class="d-flex">
+          <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
+          <h2 [routerLink]='routerPath.home' class="navbar-brand">{{'HEADER_FAV_MOVS' | translate}}</h2>
+        </div>
+        <div *ngIf="user" ngbDropdown placement="bottom" class="user">
             <span ngbDropdownToggle>Profile</span>
             <div ngbDropdownMenu>
-                <a class="dropdown-item" (click)="open(content)">{{user.image ? 'Change' : 'Set' }} Avatar</a>
-                <a class="dropdown-item" (click)="logout()">Log Out</a>
+                <a class="dropdown-item" (click)="open(content)">
+                    {{user.image ? 'HEADER_CHANGE_AVATAR' : 'HEADER_SET_AVATAR' | translate}}
+                </a>
+                <a class="dropdown-item" (click)="logout()">{{'HEADER_LOG_OUT' | translate}}</a>
               </div> 
           </div>
       </div>
-      <div class="right-block" *ngIf="user">
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <fa-icon class="d-none d-sm-block" [icon]="['fas', 'question']"></fa-icon>
-        </form>
-        <div ngbDropdown autoClose="inside" class="d-none d-sm-block user" >
-          <div class="d-flex" [ngClass]="{'active': dropDownActive}" ngbDropdownToggle (click)="dropDownActive = !dropDownActive">
-              <img [src]="avatar" 
-                onError="this.src='assets/images/no-image.png'"
-                class="rounded-circle rounded float-right"
-                alt="...">
-              <p>{{user.firstName}} <span>{{user.lastName}}</span></p>
-              <fa-icon [icon]="['fas', 'angle-down']" ></fa-icon> 
-          </div>
-          <div ngbDropdownMenu>
-            <a class="dropdown-item" (click)="open(content)">{{user.image ? 'Change' : 'Set' }} Avatar</a>
-            <a class="dropdown-item" (click)="logout()">Log Out</a>
-          </div> 
-        </div>
-      </div>
-    </div>
-    <div class="container-fluid d-md-flex d-lg-none">
-      <div class="left-block">
-          <div class="d-flex">
-            <fa-icon *ngIf="user" (click)="toggleAside()" [icon]="['fas', 'bars']"></fa-icon>
-            <h2 [routerLink]='routerPath.home' class="navbar-brand">FavMov</h2>
-          </div>
-          <div ngbDropdown placement="bottom" class="user">
-              <span ngbDropdownToggle>Profile</span>
-              <div ngbDropdownMenu>
-                  <a class="dropdown-item" (click)="open(content)">{{user.image ? 'Change' : 'Set' }} Avatar</a>
-                  <a class="dropdown-item" (click)="logout()">Log Out</a>
-                </div> 
-            </div>
-        </div>
-    </div>
-  </nav>
+  </div>
+</nav>
 
 <ng-template #content>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Load image</h4>
+    <h4 class="modal-title" id="modal-basic-title">{{ 'HEADER_LOAD_IMAGE' | translate}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -60,14 +66,14 @@
     <div>
         <label class="file-load" for="image-file-selector">
           <input id="image-file-selector" type="file" (change)="fileChangeEvent($event)" style="display:none;"/>
-          Click to load image
+          {{ 'HEADER_CLICK_TO_LOAD_IMAGE' | translate}}
         </label>
         <image-cropper
             [imageChangedEvent]="imageChangedEvent"
             [maintainAspectRatio]="true"
-            [aspectRatio]="4 / 4"
+            [aspectRatio]="4 / 3"
             [resizeToWidth]="128"
-            roundCropper = true
+            roundCropper
             format="png"
             (imageCropped)="imageCropped($event)"
             (imageLoaded)="imageLoaded()"
@@ -82,7 +88,7 @@
       type="button" 
       class="btn btn-outline-dark" 
       (click)="save()">
-      Save
+      {{ 'HEADER_SAVE' | translate}}
     </button>
   </div>
 </ng-template>

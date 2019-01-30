@@ -1,3 +1,151 @@
-<p>
-  home works!
-</p>
+<div class="home-wrp container">
+  <div class="row">
+    <div class="movie-block d-flex flex-column justify-content-center col-3">
+      <div class="" (click)="open(content)">
+        + Add new
+      </div>
+    </div>
+    <div *ngFor="let movie of movies" class="movie-block col-3">
+        <div class="d-flex">
+          <img src="../../../../assets/images//0.jpeg">
+          <div class="movie-block">
+            <h2>{{movie.name}}</h2>
+            <p>Genre</p>
+            <div class="rating-block">
+              rating
+            </div>
+            <div class="user-rating-block">
+              user rating
+            </div>
+            <div class="author-block">
+              author
+            </div>
+            <hr/>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content>
+  <form
+    novalidate
+    [formGroup]="movieForm"
+    (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Create movie post</h4>
+      <button type="button" class="close" aria-label="Close" (click)="dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-controls">
+              <div class="control-wrapper">
+                <input
+                  class="form-control mr-sm-2 my-3"
+                  type="text"
+                  placeholder="Name"
+                  aria-label="Name"
+                  formControlName="name"
+                  [ngClass]="{ 'is-invalid': submitted && movieForm.controls.name.errors }"
+                >
+                <div *ngIf="submitted && movieForm.controls.name.errors" class="invalid-feedback">
+                  <div *ngIf="movieForm.controls.name.errors.required">{{ 'HOME_NAME_MANDATORY' | translate }}</div>
+                </div> 
+              </div> 
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-controls">
+              <div class="control-wrapper">
+                <input 
+                  class="form-control mr-sm-2 my-3" 
+                  type="text" 
+                  placeholder="Genre" 
+                  aria-label="Genre"
+                  formControlName="genre"
+                  [ngClass]="{ 'is-invalid': submitted && movieForm.controls.genre.errors }">
+                <div *ngIf="submitted && movieForm.controls.genre.errors" class="invalid-feedback">
+                  <div *ngIf="movieForm.controls.genre.errors.required">{{ 'HOME_GENRE_MANDATORY' | translate }}</div>
+                </div> 
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-controls">
+              <div class="dp-wrapper">
+                <input 
+                  name="dp" 
+                  [minDate]="{year: 1900, month: 1, day: 1}"
+                  [maxDate]="{year: year, month: month, day: day}"
+                  ngbDatepicker 
+                  #d="ngbDatepicker"
+                  class="form-control mr-sm-2 my-3" 
+                  type="text" 
+                  placeholder="Released" 
+                  aria-label="Released"
+                  formControlName="released"
+                  (click)="d.toggle()"
+                  [ngClass]="{ 'is-invalid': submitted && movieForm.controls.released.errors }">
+                <div *ngIf="submitted && movieForm.controls.released.errors" class="invalid-feedback">
+                  <div *ngIf="movieForm.controls.released.errors.required">{{ 'HOME_DATE_MANDATORY' | translate }}</div>
+                </div>   
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-controls">
+              <div class="control-wrapper">
+                <textarea 
+                  class="form-control mr-sm-2 my-3" 
+                  rows="10" 
+                  cols="45" 
+                  placeholder="Description" 
+                  aria-label="Description"
+                  formControlName="description"
+                  [ngClass]="{ 'is-invalid': submitted && movieForm.controls.description.errors }"> 
+                </textarea>
+                <div *ngIf="submitted && movieForm.controls.description.errors" class="invalid-feedback">
+                  <div *ngIf="movieForm.controls.description.errors.required">{{ 'HOME_DESCRIPTION_MANDATORY' | translate }}</div>
+                </div> 
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div>
+              <label class="file-load" for="image-file-selector">
+                <input 
+                  #file 
+                  id="image-file-selector" 
+                  type="file" 
+                  (change)="fileChangeEvent($event, file)" 
+                  style="display:none;"/>
+                {{ 'HEADER_CLICK_TO_LOAD_IMAGE' | translate}}
+              </label>
+              <image-cropper
+                  [imageChangedEvent]="imageChangedEvent"
+                  [maintainAspectRatio]="true"
+                  [aspectRatio]="2 / 3"
+                  [resizeToWidth]="128"
+                  roundCropper
+                  noFileInput
+                  format="png"
+                  (imageCropped)="imageCropped($event)"
+                  (imageLoaded)="imageLoaded()"
+                  (loadImageFailed)="loadImageFailed()"
+              ></image-cropper>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit" 
+        class="btn btn-outline-dark">
+        {{ 'HEADER_SAVE' | translate}}
+      </button>
+    </div>
+  </form>
+</ng-template>

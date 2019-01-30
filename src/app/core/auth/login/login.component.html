@@ -4,7 +4,7 @@
     novalidate
     [formGroup]="loginForm"
     (ngSubmit)="onSubmit()">
-    <h2>Log in to continue</h2>
+    <h2>{{ 'LOGIN_TO_CONTINUE' | translate }}</h2>
     <div class="form-controls">
       <div class="control-wrapper">
         <input 
@@ -14,14 +14,14 @@
           type="email" 
           placeholder="Email">
         <div *ngIf="submitted && loginForm.controls.email.errors" class="invalid-feedback">
-          <div *ngIf="loginForm.controls.email.errors.required">Email is mandatory</div>
-          <div *ngIf="loginForm.controls.email.errors.email">Email is not valid</div>
+          <div *ngIf="loginForm.controls.email.errors.required">{{ 'LOGIN_EMAIL_MANDATORY' | translate }}</div>
+          <div *ngIf="loginForm.controls.email.errors.email">{{ 'LOGIN_EMAIL_INVALID' | translate}}</div>
           <div *ngIf="loginForm.controls.email.errors.userNotExist">
-            {{errorMessage}}
+            {{errorMessage | translate}}
           </div>
           <div *ngIf="loginForm.controls.email.errors.userNotVerified">
-            {{errorMessage}}
-            <a *ngIf="!resended" (click)="resendEmail()">or Resend email</a>
+            {{errorMessage | translate}}
+            <a *ngIf="!resended" (click)="resendEmail()">{{ 'CONFIRMATION_OR' | translate}} {{ 'CONFIRMATION_RESEND_EMAIL' | translate }}</a>
           </div>
         </div> 
       </div>
@@ -33,18 +33,18 @@
           type="password" 
           placeholder="Password">
         <div *ngIf="submitted && loginForm.controls.password.errors" class="invalid-feedback">
-          <div *ngIf="loginForm.controls.password.errors.required">Password is mandatory</div>
+          <div *ngIf="loginForm.controls.password.errors.required">{{ 'LOGIN_PASSWORD_MANDATORY' | translate }}</div>
         </div>
       </div>
       <div class="d-flex flex-column">
-        <button class="btn btn-primary" type="submit">Log In</button>
-        <a [routerLink]="routerPath.reset">Reset password</a>
+        <button class="btn btn-primary" type="submit">{{ 'LOGIN_LOG_IN' | translate}}</button>
+        <a [routerLink]="routerPath.reset">{{ 'LOGIN_RESET_PASSWORD' | translate }}</a>
       </div>
     </div>
     <div class="sign-in">
-      <p>Not Registered?</p>
+      <p>{{ 'LOGIN_NOT_REGISTERED' | translate }}</p>
       <div class="d-flex">
-        <button class="btn btn-secondary" [routerLink]="routerPath.signup" type="button">Sign Up</button>
+        <button class="btn btn-secondary" [routerLink]="routerPath.signup" type="button">{{ 'LOGIN_SIGN_UP' | translate}}</button>
       </div>
     </div>
   </form>

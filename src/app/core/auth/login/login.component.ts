@@ -53,11 +53,11 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         if (error.name === 'USER_NOT_EXIST') {
-          this.errorMessage = error.message;
+          this.errorMessage = error.name;
           this.loginForm.controls.email.setErrors({'userNotExist': true});
         }
         if (error.name === 'USER_NOT_VERIFIED') {
-          this.errorMessage = error.message;
+          this.errorMessage = error.name;
           this.loginForm.controls.email.setErrors({'userNotVerified': true});
           this.userService.setUserEmail(reqData.email);
         }
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
     const email: string = this.userService.getUserEmail;
     this.authService.resendConfirmation(email).pipe(
       tap((res) => {
-        this.errorMessage = 'Please check email';
+        this.errorMessage = 'LOGIN_CHECK_EMAIL';
         this.resended = true;
       }),
       catchError(error => this.errorMessage = error),

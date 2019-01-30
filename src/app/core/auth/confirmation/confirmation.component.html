@@ -1,18 +1,18 @@
 <div class="confirmation-wrp">
   <div *ngIf="!sended">
-    <h2>{{response.message}}</h2>
+    <h2>{{ response.name | translate }}</h2>
     <div *ngIf="response.name === 'TOKEN_NOT_VERIFIED'">
-      <a (click)="resendEmail()">Resend email</a> or
-      <a [routerLink]="routerPath.login">LogIn</a>
+      <a (click)="resendEmail()">{{ 'CONFIRMATION_RESEND_EMAIL' | translate }}</a> {{'CONFIRMATION_OR' | translate }}
+      <a [routerLink]="routerPath.login">{{ 'CONFIRMATION_LOGIN' | translate }}</a>
     </div>
     <div *ngIf="response.name === 'ALREADY_VERIFIED' || response.name === 'ACCOUNT_VERIFIED'">
-      <a [routerLink]="routerPath.login">LogIn</a>
+      <a [routerLink]="routerPath.login">{{ 'CONFIRMATION_LOGIN' | translate }}</a>
     </div>
     <div *ngIf="response.name === 'USER_TOKEN_NOT_FOUND'">
-      <a [routerLink]="routerPath.signup">SignUp</a>
+      <a [routerLink]="routerPath.signup">{{ 'CONFIRMATION_SIGNUP' | translate }}</a>
     </div>
   </div>
   <div *ngIf="sended">
-    <h2>Mail sended. Check your email.</h2>
+    <h2>{{ 'CONFIRMATION_MAIL_SENDED' | translate }}</h2>
   </div>
 </div>

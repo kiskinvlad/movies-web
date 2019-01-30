@@ -13,7 +13,8 @@ export const apiPaths = {
   update: '/auth/update',
   getUser: '/auth/getUser',
   reset: '/auth/reset',
-  resetConfirmation: '/auth/resetConfirmation'
+  resetConfirmation: '/auth/resetConfirmation',
+  createMovie: '/movie/create'
 };
 
 export const routerPaths = {

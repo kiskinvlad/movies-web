@@ -54,7 +54,7 @@ export class RegistrationComponent implements OnInit {
       },
       (error) => {
         if (error.name === 'USER_EMAIL_EXIST') {
-          this.errorMessage = error.message;
+          this.errorMessage = error.name;
           this.registrationForm.controls.email.setErrors({'emailExist': true});
           this.chRef.markForCheck();
         }
